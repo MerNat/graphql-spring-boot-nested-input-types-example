@@ -25,9 +25,18 @@ public class GlobalService {
 
     @Transactional
     public Color createColor(final String name){
+//        System.out.println(ExternalService.getUsers()[0].getName());
+//        System.out.println(ExternalService.getUsers()[1].getUserId());
         final Color color = new Color();
         color.setName(name);
         return this.colorRepository.save(color);
+    }
+
+    @Transactional
+    public Color updateColor(final int id, final String name){
+        Color colorInstance = this.colorRepository.findById(id).orElse(null);
+        colorInstance.setName(name);
+        return this.colorRepository.save(colorInstance);
     }
 
     @Transactional(readOnly = true)
@@ -39,6 +48,17 @@ public class GlobalService {
     public Optional<Color> getColor(final int id){
         return this.colorRepository.findById(id);
     }
+
+    @Transactional()
+    public boolean deleteColor(final int id){
+        final Color color = this.colorRepository.findById(id).orElse(null);
+        if (color == null){
+            return fasle;
+        }
+        this.colorRepository.deleteById(id);
+        return true;
+    }
+
 
     @Transactional
     public Vehicle createVehicle(final String type,final String modelCode, final String brandName, final String launchDate, final Integer color) {

@@ -15,4 +15,6 @@ public class ColorMutuation implements GraphQLMutationResolver {
     public Color createColor(final String name) {
         return this.globalService.createColor(name);
     }
+    public Color updateColor(final Integer id, final String name){ return this.globalService.updateColor(id, name); }
+    public boolean deleteColor(final Integer id){return this.globalService.deleteColor(id);}
 }

@@ -2,6 +2,7 @@ type Color {
     id: ID!
     name: String
 }
+
 type Vehicle {
     id: ID!,
     type: String,
@@ -11,12 +12,18 @@ type Vehicle {
     color: Color
 }
 type Query {
+    # Vehicles Query
     vehicles(count: Int):[Vehicle]!
     vehicle(id: ID):Vehicle
+    # Colors Query
     colors(count: Int): [Color]!
     color(id: ID): Color
 }
 type Mutation {
+    # Vehicle Mutation
     createVehicle(type: String!, modelCode: String!, brandName: String, launchDate: String, color: Int):Vehicle
+
     createColor(name: String!): Color
+    updateColor(id: Int, name: String):Color!
+    deleteColor(id: Int): Boolean
 }

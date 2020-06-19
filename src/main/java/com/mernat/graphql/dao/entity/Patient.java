@@ -23,10 +23,10 @@ public class Patient implements Serializable {
     @Column(name = "last_name", nullable = false)
     private String lastName;
 
-//    @ManyToOne()
-//    @JoinColumn(name = "bio_id",
-//            nullable = false, updatable = false)
-//    private Bio bio;
-    @Column(name = "bio", nullable = false)
-    private String bio;
+    @ManyToOne()
+    @JoinColumn(name = "bio_id",
+            nullable = false, updatable = false)
+    private Bio bio;
+//    @Column(name = "bio", nullable = false)
+//    private String bio;
 }

@@ -1,10 +1,7 @@
 package com.mernat.graphql.service;
 
-import com.mernat.graphql.dao.entity.Color;
-import com.mernat.graphql.dao.entity.Patient;
-import com.mernat.graphql.dao.entity.Vehicle;
-import com.mernat.graphql.dao.repository.ColorRepository;
-import com.mernat.graphql.dao.repository.VehicleRepository;
+import com.mernat.graphql.dao.entity.*;
+import com.mernat.graphql.dao.repository.*;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -18,10 +15,22 @@ public class GlobalService {
 
     private final VehicleRepository vehicleRepository ;
     private final ColorRepository colorRepository;
+    private final PatientRepository patientRepository;
+    private final BioRepository bioRepository;
+    private final ContactRepository contactRepository;
 
-    public GlobalService(final VehicleRepository vehicleRepository,final ColorRepository colorRepository) {
+    public GlobalService(
+            final VehicleRepository vehicleRepository,
+            final ColorRepository colorRepository,
+            final PatientRepository patientRepository,
+            final BioRepository bioRepository,
+            final ContactRepository contactRepository
+    ) {
         this.vehicleRepository = vehicleRepository;
         this.colorRepository = colorRepository;
+        this.patientRepository = patientRepository;
+        this.bioRepository = bioRepository;
+        this.contactRepository = contactRepository;
     }
 
     @Transactional
@@ -84,8 +93,17 @@ public class GlobalService {
 
     // Creating a patient
     @Transactional
-    public boolean createPatient(final Patient data){
-        System.out.println(data.toString());
-        return true;
+    public List<Patient> createPatient(final List<Patient> patients){
+        for (Patient patient : patients) {
+            this.contactRepository.save(patient.getBio().getContact());
+            this.bioRepository.save(patient.getBio());
+            this.patientRepository.save(patient);
+        }
+        return patients;
+    }
+
+    @Transactional(readOnly = true)
+    public List<Patient> getPatients(){
+        return this.patientRepository.findAll().stream().collect(Collectors.toList());
     }
 }

@@ -6,11 +6,33 @@ input Contact{
 input Bio {
     sex: String
     birthDate: String
-    contact: String
+    contact: Contact!
 }
 
 input Patient {
     bio: Bio!
+    firstName: String
+    lastName: String
+}
+
+### Types
+
+type ContactOut{
+    id: ID!
+    phoneNumber: String!
+    emergencyNumber: String!
+}
+
+type BioOut {
+    id: ID!
+    sex: String
+    birthDate: String
+    contact: ContactOut!
+}
+
+type PatientOutput {
+    id: ID!
+    bio: BioOut!
     firstName: String
     lastName: String
 }
@@ -36,6 +58,7 @@ type Query {
     # Colors Query
     colors(count: Int): [Color]!
     color(id: ID): Color
+    patients:[PatientOutput]!
 }
 
 type Mutation {
@@ -46,5 +69,5 @@ type Mutation {
     updateColor(id: Int, name: String):Color!
     deleteColor(id: Int): Boolean
     # Create a Patient
-    createPatient(patient: Patient!): Boolean
+    createPatient(patient: [Patient!]): [PatientOutput!]!
 }

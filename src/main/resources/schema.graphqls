@@ -1,3 +1,20 @@
+
+input Contact{
+    phoneNumber: String!
+    emergencyNumber: String!
+}
+input Bio {
+    sex: String
+    birthDate: String
+    contact: String
+}
+
+input Patient {
+    bio: Bio!
+    firstName: String
+    lastName: String
+}
+
 type Color {
     id: ID!
     name: String
@@ -11,6 +28,7 @@ type Vehicle {
     launchDate: String
     color: Color
 }
+
 type Query {
     # Vehicles Query
     vehicles(count: Int):[Vehicle]!
@@ -19,6 +37,7 @@ type Query {
     colors(count: Int): [Color]!
     color(id: ID): Color
 }
+
 type Mutation {
     # Vehicle Mutation
     createVehicle(type: String!, modelCode: String!, brandName: String, launchDate: String, color: Int):Vehicle
@@ -26,4 +45,6 @@ type Mutation {
     createColor(name: String!): Color
     updateColor(id: Int, name: String):Color!
     deleteColor(id: Int): Boolean
+    # Create a Patient
+    createPatient(patient: Patient!): Boolean
 }

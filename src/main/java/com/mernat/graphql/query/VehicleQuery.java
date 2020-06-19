@@ -1,6 +1,6 @@
 package com.mernat.graphql.query;
 
-import com.coxautodev.graphql.tools.GraphQLQueryResolver;
+import graphql.kickstart.tools.GraphQLQueryResolver;
 import com.mernat.graphql.dao.entity.Vehicle;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

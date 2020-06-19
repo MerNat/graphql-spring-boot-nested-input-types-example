@@ -1,6 +1,7 @@
 package com.mernat.graphql.service;
 
 import com.mernat.graphql.dao.entity.Color;
+import com.mernat.graphql.dao.entity.Patient;
 import com.mernat.graphql.dao.entity.Vehicle;
 import com.mernat.graphql.dao.repository.ColorRepository;
 import com.mernat.graphql.dao.repository.VehicleRepository;
@@ -53,7 +54,7 @@ public class GlobalService {
     public boolean deleteColor(final int id){
         final Color color = this.colorRepository.findById(id).orElse(null);
         if (color == null){
-            return fasle;
+            return false;
         }
         this.colorRepository.deleteById(id);
         return true;
@@ -79,5 +80,12 @@ public class GlobalService {
     @Transactional(readOnly = true)
     public Optional<Vehicle> getVehicle(final int id) {
         return this.vehicleRepository.findById(id);
+    }
+
+    // Creating a patient
+    @Transactional
+    public boolean createPatient(final Patient data){
+        System.out.println(data.toString());
+        return true;
     }
 }

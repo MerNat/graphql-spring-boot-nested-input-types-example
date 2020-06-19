@@ -1,6 +1,6 @@
 package com.mernat.graphql.mutation;
 
-import com.coxautodev.graphql.tools.GraphQLMutationResolver;
+import graphql.kickstart.tools.GraphQLMutationResolver;
 import com.mernat.graphql.dao.entity.Color;
 import com.mernat.graphql.service.GlobalService;
 import org.springframework.beans.factory.annotation.Autowired;

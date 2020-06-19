@@ -1,6 +1,6 @@
 package com.mernat.graphql.query;
 
-import com.coxautodev.graphql.tools.GraphQLQueryResolver;
+import graphql.kickstart.tools.GraphQLQueryResolver;
 import com.mernat.graphql.dao.entity.Color;
 import com.mernat.graphql.service.GlobalService;
 import org.springframework.beans.factory.annotation.Autowired;

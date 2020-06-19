@@ -54,19 +54,24 @@ type Vehicle {
 type Query {
     # Vehicles Query
     vehicles(count: Int):[Vehicle]!
+    # Single vehicle
     vehicle(id: ID):Vehicle
     # Colors Query
     colors(count: Int): [Color]!
+    # single Color instance by id
     color(id: ID): Color
+    # All patients
     patients:[PatientOutput]!
 }
 
 type Mutation {
     # Vehicle Mutation
     createVehicle(type: String!, modelCode: String!, brandName: String, launchDate: String, color: Int):Vehicle
-
+    # Create a Color instance
     createColor(name: String!): Color
+    # Update a color instance
     updateColor(id: Int, name: String):Color!
+    # Delete a Color instance
     deleteColor(id: Int): Boolean
     # Create a Patient
     createPatient(patient: [Patient!]): [PatientOutput!]!

@@ -10,7 +10,6 @@ import java.io.Serializable;
 @EqualsAndHashCode
 @Entity
 public class Color implements Serializable {
-
     @Id
     @Column(name = "color_id", nullable = false)
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -18,5 +17,4 @@ public class Color implements Serializable {
 
     @Column(name = "name", nullable = false)
     private String name;
-
 }

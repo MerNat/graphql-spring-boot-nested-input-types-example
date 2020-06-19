@@ -27,6 +27,4 @@ public class Patient implements Serializable {
     @JoinColumn(name = "bio_id",
             nullable = false, updatable = false)
     private Bio bio;
-//    @Column(name = "bio", nullable = false)
-//    private String bio;
 }

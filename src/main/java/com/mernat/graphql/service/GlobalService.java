@@ -93,7 +93,7 @@ public class GlobalService {
 
     // Creating a patient
     @Transactional
-    public List<Patient> createPatient(final List<Patient> patients){
+    public List<Patient> createPatients(final List<Patient> patients){
         for (Patient patient : patients) {
             this.contactRepository.save(patient.getBio().getContact());
             this.bioRepository.save(patient.getBio());

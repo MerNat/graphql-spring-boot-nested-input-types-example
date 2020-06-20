@@ -74,5 +74,5 @@ type Mutation {
     # Delete a Color instance
     deleteColor(id: Int): Boolean
     # Create a Patient
-    createPatient(patient: [Patient!]): [PatientOutput!]!
+    createPatients(patients: [Patient!]): [PatientOutput!]!
 }

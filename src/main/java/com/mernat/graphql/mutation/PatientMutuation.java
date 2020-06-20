@@ -13,7 +13,7 @@ public class PatientMutuation implements GraphQLMutationResolver {
     @Autowired
     private GlobalService globalService;
 
-    public List<Patient> createPatient(final List<Patient> patient){
-        return this.globalService.createPatient(patient);
+    public List<Patient> createPatients(final List<Patient> patient){
+        return this.globalService.createPatients(patient);
     }
 }

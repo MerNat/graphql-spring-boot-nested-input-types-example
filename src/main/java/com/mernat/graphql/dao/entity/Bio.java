@@ -24,6 +24,6 @@ public class Bio implements Serializable {
 
     @ManyToOne()
     @JoinColumn(name = "contact_id",
-            nullable = false, updatable = false)
+            nullable = true, updatable = true)
     private Contact contact;
 }

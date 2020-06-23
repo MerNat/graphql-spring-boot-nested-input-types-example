@@ -25,6 +25,6 @@ public class Patient implements Serializable {
 
     @ManyToOne()
     @JoinColumn(name = "bio_id",
-            nullable = false, updatable = false)
+            nullable = true, updatable = true)
     private Bio bio;
 }

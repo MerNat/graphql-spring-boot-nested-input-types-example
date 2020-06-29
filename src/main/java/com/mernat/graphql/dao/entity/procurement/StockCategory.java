@@ -1,4 +1,4 @@
-package com.mernat.graphql.dao.entity;
+package com.mernat.graphql.dao.entity.procurement;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;

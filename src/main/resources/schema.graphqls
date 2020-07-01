@@ -75,4 +75,14 @@ type Mutation {
     deleteColor(id: Int): Boolean
     # Create a Patient
     createPatients(patients: [Patient!]): [PatientOutput!]!
+
+#    createBaseTemplateEnV1Composition(compositions: [BaseTemplateEnV1Composition!]): [BaseTemplateEnV1CompositionOutput!]
+}
+
+type BaseTemplateEnV1Composition{
+  versionUid: VersionUid!
+}
+
+type VersionUid{
+    name: String
 }

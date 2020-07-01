@@ -6,7 +6,7 @@ input Contact{
 input Bio {
     sex: String
     birthDate: String
-    contact: Contact
+    contacts: [Contact!]
 }
 
 input Patient {
@@ -27,7 +27,7 @@ type BioOut {
     id: ID!
     sex: String
     birthDate: String
-    contact: ContactOut
+    contacts: [ContactOut!]
 }
 
 type PatientOutput {
@@ -61,7 +61,7 @@ type Query {
     # single Color instance by id
     color(id: ID): Color
     # All patients
-    patients:[PatientOutput]!
+    patients:[PatientOutput!]!
 }
 
 type Mutation {

@@ -96,12 +96,14 @@ public class GlobalService {
     public List<Patient> createPatients(final List<Patient> patients) {
         for (Patient patient : patients) {
             if (!this.checkNull(patient.getBio())) {
-                this.bioRepository.save(patient.getBio());
-                if (!this.checkNull(patient.getBio().getContact())) {
-                    this.contactRepository.save(patient.getBio().getContact());
+                if (!this.checkNull(patient.getBio().getContacts())) {
+                    for (Contact contact: patient.getBio().getContacts()){
+                        this.contactRepository.saveAndFlush(contact);
+                    }
                 }
+                this.bioRepository.saveAndFlush(patient.getBio());
             }
-            this.patientRepository.save(patient);
+            this.patientRepository.saveAndFlush(patient);
         }
         return patients;
     }

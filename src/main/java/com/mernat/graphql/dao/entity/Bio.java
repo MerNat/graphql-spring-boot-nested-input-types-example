@@ -5,6 +5,7 @@ import lombok.EqualsAndHashCode;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 
 @Data
@@ -22,8 +23,6 @@ public class Bio implements Serializable {
     @Column(name = "birth_date", nullable = false)
     private String birthDate;
 
-    @ManyToOne()
-    @JoinColumn(name = "contact_id",
-            nullable = true, updatable = true)
-    private Contact contact;
+    @OneToMany(fetch = FetchType.EAGER)
+    private List<Contact> contacts;
 }
